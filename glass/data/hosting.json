@@ -1,0 +1,49 @@
+{
+    "services": [
+        {
+            "name": "Vaultwarden",
+            "icon": "fas fa-key",
+            "url": "https://ex.example.tld",
+            "description": "Secure password manager for all devices",
+            "view_type": "Admin",
+            "status_tag": "Stable",
+            "host_type": "Self-Hosted"
+        },
+        {
+            "name": "Netdata",
+            "icon": "fas fa-tachometer-alt",
+            "url": "https://ex.example.tld",
+            "description": "Real-time system performance monitoring",
+            "view_type": "Admin",
+            "status_tag": "Stable",
+            "host_type": "Self-Hosted"
+        },
+        {
+            "name": "AdGuard Home",
+            "icon": "fas fa-shield-alt",
+            "url": "https://ex.example.tld",
+            "description": "Network-wide ad blocking and DNS management",
+            "view_type": "Both",
+            "status_tag": "Stable",
+            "host_type": "Self-Hosted"
+        },
+        {
+            "name": "GitLab",
+            "icon": "fab fa-gitlab",
+            "url": "https://ex.example.tld",
+            "description": "Self-hosted Git repository and CI/CD",
+            "view_type": "Both",
+            "status_tag": "Experimental",
+            "host_type": "Self-Hosted"
+        },
+        {
+            "name": "n8n",
+            "icon": "fas fa-robot",
+            "url": "https://ex.example.tld",
+            "description": "Workflow automation and integration platform",
+            "view_type": "Admin",
+            "status_tag": "Development",
+            "host_type": "Self-Hosted"
+        }
+    ]
+}

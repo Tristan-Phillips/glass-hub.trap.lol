@@ -1,0 +1,31 @@
+{
+  "categories": [
+    {
+      "name": "Streaming Essentials",
+      "icon": "fas fa-tv",
+      "links": [
+        {"name": "Netflix", "url": "https://netflix.com", "icon": "fas fa-n"},
+        {"name": "HBO Max", "url": "https://hbomax.com", "icon": "fas fa-h"},
+        {"name": "Showmax", "url": "https://showmax.com", "icon": "fas fa-s"}
+      ]
+    },
+    {
+      "name": "Creative Tools",
+      "icon": "fas fa-paintbrush",
+      "links": [
+        {"name": "Figma", "url": "https://figma.com", "icon": "fas fa-pen-ruler"},
+        {"name": "Adobe CC", "url": "https://adobe.com", "icon": "fas fa-layer-group"},
+        {"name": "Canva Pro", "url": "https://canva.com", "icon": "fas fa-palette"}
+      ]
+    },
+    {
+      "name": "Gaming Network",
+      "icon": "fas fa-gamepad",
+      "links": [
+        {"name": "Steam", "url": "https://store.steampowered.com", "icon": "fab fa-steam"},
+        {"name": "Epic Games", "url": "https://epicgames.com", "icon": "fas fa-egg"},
+        {"name": "GOG", "url": "https://gog.com", "icon": "fas fa-dragon"}
+      ]
+    }
+  ]
+}

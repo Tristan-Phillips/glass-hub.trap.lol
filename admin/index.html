@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="trap.lol admin dashboard - Infrastructure management and monitoring">
+    <meta name="theme-color" content="#0a0e1a">
+    <meta name="robots" content="noindex, nofollow">
+    <title>trap.lol // admin</title>
+    <link rel="stylesheet" href="../glass/style/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .admin-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.25rem 0.75rem;
+            background: rgba(139, 92, 246, 0.1);
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            border-radius: 0.25rem;
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            color: var(--admin-accent);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-left: 1rem;
+        }
+
+        .quick-actions {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .action-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.25rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 0.375rem;
+            color: var(--text-primary);
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            text-decoration: none;
+            transition: all var(--transition-base);
+            cursor: pointer;
+        }
+
+        .action-btn:hover {
+            background: var(--bg-hover);
+            border-color: var(--border-active);
+            transform: translateY(-1px);
+        }
+
+        .system-status {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .status-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 0.375rem;
+            padding: 1rem;
+            backdrop-filter: blur(var(--glass-blur));
+        }
+
+        .status-label {
+            font-family: var(--font-mono);
+            font-size: 0.625rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-dim);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .status-value {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        @media (max-width: 768px) {
+            .admin-indicator {
+                margin-left: 0;
+                margin-top: 0.5rem;
+            }
+
+            .quick-actions {
+                flex-direction: column;
+            }
+
+            .action-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="loader" class="loader-container">
+        <div class="terminal-loader">
+            <span class="loader-text">AUTHENTICATING</span>
+            <span class="loader-dots">...</span>
+        </div>
+    </div>
+
+    <div id="exit-overlay" class="exit-overlay">
+        <div class="exit-content">
+            <i class="fas fa-shield-halved"></i>
+            <p>Exiting trap.lol Secure Perimeter...</p>
+        </div>
+    </div>
+
+    <main id="app" class="container hidden">
+        <header class="header">
+            <div class="header-content">
+                <div style="display: flex; align-items: center; flex-wrap: wrap;">
+                    <h1 class="site-title">
+                        <span class="title-prefix">$</span>
+                        <span class="title-main">trap.lol</span>
+                        <span class="title-suffix" id="view-indicator">/admin</span>
+                    </h1>
+                    <span class="admin-indicator">
+                        <i class="fas fa-user-shield"></i>
+                        Admin Mode
+                    </span>
+                </div>
+                <div class="header-meta">
+                    <span id="service-count" class="meta-tag">0 services</span>
+                    <span id="connection-status" class="status-indicator">
+                        <i class="fas fa-circle"></i>
+                    </span>
+                </div>
+            </div>
+        </header>
+
+        <div class="quick-actions">
+            <a href="../" class="action-btn" title="Switch to User View">
+                <i class="fas fa-users"></i>
+                User View
+            </a>
+            <button class="action-btn" onclick="window.location.reload()" title="Refresh Dashboard">
+                <i class="fas fa-sync-alt"></i>
+                Refresh
+            </button>
+            <button class="action-btn" onclick="document.documentElement.requestFullscreen()" title="Fullscreen Mode">
+                <i class="fas fa-expand"></i>
+                Fullscreen
+            </button>
+        </div>
+
+        <div class="system-status">
+            <div class="status-card">
+                <span class="status-label">Total Services</span>
+                <span class="status-value" id="total-services">0</span>
+            </div>
+            <div class="status-card">
+                <span class="status-label">External Links</span>
+                <span class="status-value" id="external-services">0</span>
+            </div>
+            <div class="status-card">
+                <span class="status-label">Self-Hosted</span>
+                <span class="status-value" id="selfhosted-services">0</span>
+            </div>
+            <div class="status-card">
+                <span class="status-label">System Uptime</span>
+                <span class="status-value" id="system-uptime">--</span>
+            </div>
+        </div>
+
+        <div class="search-container">
+            <div class="search-wrapper">
+                <i class="fas fa-search search-icon"></i>
+                <input 
+                    type="text" 
+                    id="search-input" 
+                    class="search-input" 
+                    placeholder="Filter services..."
+                    autocomplete="off"
+                    spellcheck="false"
+                >
+                <button id="clear-search" class="clear-search hidden">
+                    <i class="fas fa-xmark"></i>
+                </button>
+            </div>
+        </div>
+
+        <section id="services-grid" class="services-grid">
+            <!-- Dynamic services -->
+        </section>
+
+        <section id="links-section" class="links-section hidden">
+            <h2 class="section-title">
+                <i class="fas fa-external-link-alt"></i>
+                External Resources
+            </h2>
+            <div id="links-container" class="links-container">
+                <!-- Dynamic links -->
+            </div>
+        </section>
+
+        <section id="telemetry-dashboard" class="telemetry-dashboard">
+            <h2 class="section-title">
+                <i class="fas fa-chart-line"></i>
+                System Telemetry
+            </h2>
+            <div class="telemetry-grid">
+                <div class="telemetry-slot" data-telemetry="cpu">
+                    <span class="slot-label">CPU Usage</span>
+                    <div class="slot-placeholder">
+                        <i class="fas fa-microchip"></i>
+                        <span>Awaiting Netdata</span>
+                    </div>
+                </div>
+                <div class="telemetry-slot" data-telemetry="memory">
+                    <span class="slot-label">Memory</span>
+                    <div class="slot-placeholder">
+                        <i class="fas fa-memory"></i>
+                        <span>Awaiting Netdata</span>
+                    </div>
+                </div>
+                <div class="telemetry-slot" data-telemetry="network">
+                    <span class="slot-label">Network I/O</span>
+                    <div class="slot-placeholder">
+                        <i class="fas fa-network-wired"></i>
+                        <span>Awaiting Grafana</span>
+                    </div>
+                </div>
+                <div class="telemetry-slot" data-telemetry="uptime">
+                    <span class="slot-label">Services Health</span>
+                    <div class="slot-placeholder">
+                        <i class="fas fa-heartbeat"></i>
+                        <span>Awaiting Gatus</span>
+                    </div>
+                </div>
+                <div class="telemetry-slot" data-telemetry="storage">
+                    <span class="slot-label">Storage</span>
+                    <div class="slot-placeholder">
+                        <i class="fas fa-hard-drive"></i>
+                        <span>Awaiting Integration</span>
+                    </div>
+                </div>
+                <div class="telemetry-slot" data-telemetry="docker">
+                    <span class="slot-label">Containers</span>
+                    <div class="slot-placeholder">
+                        <i class="fab fa-docker"></i>
+                        <span>Awaiting Portainer</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div id="error-state" class="error-state hidden">
+            <i class="fas fa-triangle-exclamation"></i>
+            <h2>System Offline</h2>
+            <p>Unable to retrieve service configuration</p>
+            <button id="retry-btn" class="retry-btn">
+                <i class="fas fa-rotate-right"></i>
+                Retry Connection
+            </button>
+        </div>
+
+        <footer class="footer">
+            <div class="footer-content">
+                <span class="footer-text">
+                    <i class="fas fa-shield-halved"></i>
+                    Administrative Dashboard
+                </span>
+                <span class="footer-meta">
+                    Last refresh: <span id="last-refresh">--:--</span>
+                </span>
+            </div>
+        </footer>
+    </main>
+
+    <script src="/glass/script/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            setInterval(() => {
+                const now = new Date();
+                const timeString = now.toLocaleTimeString('en-US', { 
+                    hour: '2-digit', 
+                    minute: '2-digit',
+                    hour12: false 
+                });
+                const refreshElement = document.getElementById('last-refresh');
+                if (refreshElement) refreshElement.textContent = timeString;
+            }, 60000);
+        });
+    </script>
+</body>
+</html>
