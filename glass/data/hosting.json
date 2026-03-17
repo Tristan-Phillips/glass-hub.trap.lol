@@ -1,48 +1,39 @@
 {
     "services": [
         {
-            "name": "Vaultwarden",
-            "icon": "fas fa-key",
-            "url": "https://ex.example.tld",
-            "description": "Secure password manager for all devices",
-            "view_type": "Admin",
+            "name": "StirlingPDF",
+            "icon": "fas fa-file-pdf",
+            "url": "https://pdf.trap.lol",
+            "description": "PDF manipulation toolkit with editing, conversion, OCR, and compression",
+            "view_type": "User",
             "status_tag": "Stable",
             "host_type": "Self-Hosted"
         },
         {
-            "name": "Netdata",
-            "icon": "fas fa-tachometer-alt",
-            "url": "https://ex.example.tld",
-            "description": "Real-time system performance monitoring",
-            "view_type": "Admin",
+            "name": "IT-Tools",
+            "icon": "fas fa-toolbox",
+            "url": "https://tools.trap.lol",
+            "description": "Collection of developer utilities including converters, encoders, and network tools",
+            "view_type": "User",
             "status_tag": "Stable",
             "host_type": "Self-Hosted"
         },
         {
-            "name": "AdGuard Home",
-            "icon": "fas fa-shield-alt",
-            "url": "https://ex.example.tld",
-            "description": "Network-wide ad blocking and DNS management",
-            "view_type": "Both",
+            "name": "CyberChef",
+            "icon": "fas fa-wand-magic-sparkles",
+            "url": "https://cyber.trap.lol",
+            "description": "Web-based data transformation tool for encryption, encoding, and binary analysis",
+            "view_type": "User",
             "status_tag": "Stable",
             "host_type": "Self-Hosted"
         },
         {
-            "name": "GitLab",
-            "icon": "fab fa-gitlab",
-            "url": "https://ex.example.tld",
-            "description": "Self-hosted Git repository and CI/CD",
-            "view_type": "Both",
-            "status_tag": "Experimental",
-            "host_type": "Self-Hosted"
-        },
-        {
-            "name": "n8n",
-            "icon": "fas fa-robot",
-            "url": "https://ex.example.tld",
-            "description": "Workflow automation and integration platform",
-            "view_type": "Admin",
-            "status_tag": "Development",
+            "name": "PairDrop",
+            "icon": "fas fa-share-from-square",
+            "url": "https://drop.trap.lol",
+            "description": "Peer-to-peer file and text sharing platform with end-to-end encryption",
+            "view_type": "User",
+            "status_tag": "Stable",
             "host_type": "Self-Hosted"
         }
     ]
