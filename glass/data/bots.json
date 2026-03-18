@@ -1,0 +1,18 @@
+[
+  {
+    "name": "Zenith",
+    "icon": "fa-solid fa-robot",
+    "chat_url": "https://t.me/zenith_art_bot",
+    "repo_url": "https://git.trap.lol/trap/zenith",
+    "status": "online",
+    "description": "Automated watermark & archive engine."
+  },
+  {
+    "name": "Jarvis",
+    "icon": "fa-solid fa-microchip",
+    "chat_url": "https://t.me/your_jarvis_bot",
+    "repo_url": "https://git.trap.lol/trap/jarvis",
+    "status": "dev",
+    "description": "VPS master control interface."
+  }
+]

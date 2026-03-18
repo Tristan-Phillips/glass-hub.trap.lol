@@ -2,125 +2,44 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <meta name="description" content="trap.lol infrastructure hub - Terminal-chic gateway to self-hosted services">
-    <meta name="theme-color" content="#0a0e1a">
-    <title>trap.lol // hub</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>trap.lol // uplink</title>
     <link rel="stylesheet" href="glass/style/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div id="loader" class="loader-container">
-        <div class="terminal-loader">
-            <span class="loader-text">INITIALIZING</span>
-            <span class="loader-dots">...</span>
-        </div>
+    <div id="cmd-overlay" class="cmd-overlay hidden">
+        <span id="cmd-text"></span><span class="cursor">_</span>
     </div>
 
-    <div id="exit-overlay" class="exit-overlay">
-        <div class="exit-content">
-            <i class="fas fa-shield-halved"></i>
-            <p>Exiting trap.lol Secure Perimeter...</p>
-        </div>
-    </div>
+    <header>
+        <h1>trap.lol</h1>
+        <p class="subtitle">Secure Routing & Resources</p>
+    </header>
 
-    <main id="app" class="container hidden">
-        <header class="header">
-            <div class="header-content">
-                <h1 class="site-title">
-                    <span class="title-prefix">$</span>
-                    <span class="title-main">trap.lol</span>
-                    <span class="title-suffix" id="view-indicator">/hub</span>
-                </h1>
-                <div class="header-meta">
-                    <span id="service-count" class="meta-tag">0 services</span>
-                    <span id="connection-status" class="status-indicator">
-                        <i class="fas fa-circle"></i>
-                    </span>
-                </div>
-            </div>
-        </header>
-
-        <!-- <div class="search-container">
-            <div class="search-wrapper">
-                <i class="fas fa-search search-icon"></i>
-                <input 
-                    type="text" 
-                    id="search-input" 
-                    class="search-input" 
-                    placeholder="Filter services..."
-                    autocomplete="off"
-                    spellcheck="false"
-                >
-                <button id="clear-search" class="clear-search hidden">
-                    <i class="fas fa-xmark"></i>
-                </button>
-            </div>
-        </div> -->
-
-        <section id="services-grid" class="services-grid">
-            <!-- Dynamic services -->
+    <main>
+        <section id="hosting-section">
+            <h2 class="section-title"><i class="fa-solid fa-server"></i> Active Nodes</h2>
+            <div id="hosting-grid" class="grid-primary"></div>
         </section>
 
-        <!-- <section id="links-section" class="links-section hidden">
-            <h2 class="section-title">
-                <i class="fas fa-external-link-alt"></i>
-                Quick Links
-            </h2>
-            <div id="links-container" class="links-container"> -->
-                <!-- Dynamic links -->
-            <!-- </div>
-        </section> -->
-
-        <section id="telemetry-dashboard" class="telemetry-dashboard hidden">
-            <h2 class="section-title">
-                <i class="fas fa-chart-line"></i>
-                System Telemetry
-            </h2>
-            <div class="telemetry-grid">
-                <div class="telemetry-slot" data-telemetry="cpu">
-                    <span class="slot-label">CPU Usage</span>
-                    <div class="slot-placeholder">Awaiting Integration</div>
-                </div>
-                <div class="telemetry-slot" data-telemetry="memory">
-                    <span class="slot-label">Memory</span>
-                    <div class="slot-placeholder">Awaiting Integration</div>
-                </div>
-                <div class="telemetry-slot" data-telemetry="network">
-                    <span class="slot-label">Network I/O</span>
-                    <div class="slot-placeholder">Awaiting Integration</div>
-                </div>
-                <div class="telemetry-slot" data-telemetry="uptime">
-                    <span class="slot-label">Services Health</span>
-                    <div class="slot-placeholder">Awaiting Integration</div>
-                </div>
-            </div>
+        <section id="bots-section">
+            <h2 class="section-title"><i class="fa-solid fa-network-wired"></i> Active Agents</h2>
+            <div id="bots-container" class="bots-grid"></div>
         </section>
 
-        <div id="error-state" class="error-state hidden">
-            <i class="fas fa-triangle-exclamation"></i>
-            <h2>System Offline</h2>
-            <p>Unable to retrieve service configuration</p>
-            <button id="retry-btn" class="retry-btn">
-                <i class="fas fa-rotate-right"></i>
-                Retry Connection
-            </button>
-        </div>
+        <section id="extlinks-section">
+            <h2 class="section-title"><i class="fa-solid fa-globe"></i> Global Uplinks <span class="hint">[Type Shortcut to Navigate]</span></h2>
+            <div id="extlinks-container" class="ext-container"></div>
+        </section>
 
-        <footer class="footer">
-            <div class="footer-content">
-                <span class="footer-text">
-                    <i class="fas fa-terminal"></i>
-                    trap.lol infrastructure
-                </span>
-                <a href="admin/" class="admin-link" title="Admin Dashboard">
-                    <i class="fas fa-user-shield"></i>
-                </a>
-            </div>
-        </footer>
+        <section id="guides-section">
+            <h2 class="section-title"><i class="fa-solid fa-book-journal-whills"></i> Knowledge Base</h2>
+            <div id="guides-carousel" class="carousel"></div>
+        </section>
     </main>
 
     <script src="glass/script/app.js"></script>

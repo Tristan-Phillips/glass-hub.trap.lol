@@ -1,40 +1,20 @@
-{
-    "services": [
-        {
-            "name": "StirlingPDF",
-            "icon": "fas fa-file-pdf",
-            "url": "https://pdf.trap.lol",
-            "description": "PDF manipulation toolkit with editing, conversion, OCR, and compression",
-            "view_type": "User",
-            "status_tag": "Stable",
-            "host_type": "Self-Hosted"
-        },
-        {
-            "name": "IT-Tools",
-            "icon": "fas fa-toolbox",
-            "url": "https://tools.trap.lol",
-            "description": "Collection of developer utilities including converters, encoders, and network tools",
-            "view_type": "User",
-            "status_tag": "Stable",
-            "host_type": "Self-Hosted"
-        },
-        {
-            "name": "CyberChef",
-            "icon": "fas fa-wand-magic-sparkles",
-            "url": "https://cyber.trap.lol",
-            "description": "Web-based data transformation tool for encryption, encoding, and binary analysis",
-            "view_type": "User",
-            "status_tag": "Stable",
-            "host_type": "Self-Hosted"
-        },
-        {
-            "name": "PairDrop",
-            "icon": "fas fa-share-from-square",
-            "url": "https://drop.trap.lol",
-            "description": "Peer-to-peer file and text sharing platform with end-to-end encryption",
-            "view_type": "User",
-            "status_tag": "Stable",
-            "host_type": "Self-Hosted"
-        }
-    ]
-}
+[
+  {
+    "name": "Forgejo",
+    "icon": "fa-solid fa-code-branch",
+    "url": "https://git.trap.lol",
+    "status": "online"
+  },
+  {
+    "name": "Stirling PDF",
+    "icon": "fa-solid fa-file-pdf",
+    "url": "https://pdf.trap.lol",
+    "status": "online"
+  },
+  {
+    "name": "IT-Tools",
+    "icon": "fa-solid fa-toolbox",
+    "url": "https://tools.trap.lol",
+    "status": "online"
+  }
+]

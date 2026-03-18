@@ -1,0 +1,26 @@
+[
+  {
+    "category": "A - Media & Streaming",
+    "links": [
+      {
+        "name": "Spotify Web",
+        "shortcut": "A1",
+        "url": "https://open.spotify.com",
+        "trust_level": "High",
+        "info": "Official web player. Requires premium for no ads."
+      }
+    ]
+  },
+  {
+    "category": "B - Utility & Tools",
+    "links": [
+      {
+        "name": "Photopea",
+        "shortcut": "B1",
+        "url": "https://www.photopea.com/",
+        "trust_level": "High",
+        "info": "Free, browser-based Photoshop alternative."
+      }
+    ]
+  }
+]
