@@ -3,7 +3,9 @@
     "title": "trap.lol",
     "domain": "hub.trap.lol",
     "tagline": "Sovereign Infrastructure & Spice Routes",
-    "eyebrow": "[ FREMEN UPLINK // CHAOS VECTOR ONLINE ]"
+    "eyebrow": "[ FREMEN UPLINK // CHAOS VECTOR ONLINE ]",
+    "author": "trap",
+    "year": "2026"
   },
   "shards": {
     "lucide": "/shards/lucide.min.js",

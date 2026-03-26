@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="glass/style/style.css" />
   </head>
   <body>
-    <div id="cmd-overlay" class="cmd-overlay hidden">
+    <div id="cmd-overlay" class="cmd-overlay hidden" aria-live="polite" aria-label="Shortcut buffer">
       <span id="cmd-text"></span><span class="cursor">_</span>
     </div>
 
@@ -25,8 +25,17 @@
         <div id="hosting-grid" class="grid-primary"></div>
       </section>
 
+      <section id="tools-section">
+        <h2 class="section-title">
+          <i data-lucide="terminal-square"></i> Ordnance Depot
+        </h2>
+        <div id="tools-container" class="tools-grid"></div>
+      </section>
+
       <section id="bots-section">
-        <h2 class="section-title"><i data-lucide="network"></i> Drone Fleet</h2>
+        <h2 class="section-title">
+          <i data-lucide="network"></i> Drone Fleet
+        </h2>
         <div id="bots-container" class="bots-grid"></div>
       </section>
 
@@ -42,16 +51,49 @@
         <h2 class="section-title">
           <i data-lucide="book-open"></i> Sacred Codex
         </h2>
-        <div id="guides-carousel" class="carousel"></div>
+        <div id="guides-carousel" class="carousel">
+          <button class="carousel__arrow carousel__arrow--prev" aria-label="Scroll guides left">
+            <i data-lucide="chevron-left"></i>
+          </button>
+          <div id="guides-track" class="carousel__track"></div>
+          <button class="carousel__arrow carousel__arrow--next" aria-label="Scroll guides right">
+            <i data-lucide="chevron-right"></i>
+          </button>
+        </div>
       </section>
     </main>
 
-    <section id="tools-section">
-      <h2 class="section-title">
-        <i data-lucide="terminal-square"></i> Ordnance Depot
-      </h2>
-      <div id="tools-container" class="tools-grid"></div>
-    </section>
+    <footer class="site-footer">
+      <div class="site-footer__grid">
+        <div class="site-footer__brand">
+          <span class="site-footer__logo" id="footer-domain"></span>
+          <p class="site-footer__tagline" id="footer-tagline"></p>
+        </div>
+        <nav class="site-footer__links" aria-label="Footer navigation">
+          <a href="https://git.trap.lol/trap" target="_blank" rel="noopener" class="site-footer__link">
+            <i data-lucide="git-branch"></i> Forgejo
+          </a>
+          <a href="https://git.trap.lol/trap/payloads" target="_blank" rel="noopener" class="site-footer__link">
+            <i data-lucide="package"></i> Payloads
+          </a>
+        </nav>
+        <div class="site-footer__meta">
+          <span class="site-footer__license">
+            <i data-lucide="shield"></i> GPL-3.0
+          </span>
+          <span class="site-footer__signal" id="footer-signal">[ UPLINK STABLE ]</span>
+        </div>
+      </div>
+      <div class="site-footer__bar">
+        <span id="footer-copy"></span>
+        <span class="site-footer__bar-sep">//</span>
+        <span>Assume Breach. Stay Sovereign.</span>
+      </div>
+    </footer>
+
+    <button id="scroll-top" class="scroll-top hidden" aria-label="Scroll to top">
+      <i data-lucide="chevron-up"></i>
+    </button>
 
     <script src="glass/script/app.js"></script>
   </body>
