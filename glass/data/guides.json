@@ -1,8 +1,9 @@
 [
   {
-    "title": "Arch Linux Post-Install",
-    "icon": "fa-brands fa-linux",
-    "file": "arch-setup.md",
-    "read_time": "5 min"
+    "title": "Virgin VPS",
+    "description": "Debian 13 freshly spun-up VPS, protection instructions, and basic hardening steps",
+    "icon": "terminal",
+    "file": "virgin-vps.md",
+    "read_time": "1 Day Project"
   }
 ]

@@ -1,0 +1,12 @@
+{
+  "site": {
+    "title": "trap.lol",
+    "domain": "hub.trap.lol",
+    "tagline": "Sovereign Infrastructure & Spice Routes",
+    "eyebrow": "[ FREMEN UPLINK // CHAOS VECTOR ONLINE ]"
+  },
+  "shards": {
+    "lucide": "/shards/lucide.min.js",
+    "marked": "/shards/marked.min.js"
+  }
+}

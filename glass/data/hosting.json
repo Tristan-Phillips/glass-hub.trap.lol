@@ -1,20 +1,42 @@
 [
   {
-    "name": "Forgejo",
-    "icon": "fa-solid fa-code-branch",
+    "name": "Version Control",
+    "hosting": "Forgejo",
+    "source": "https://codeberg.org/forgejo/forgejo",
+    "icon": "git-branch",
     "url": "https://git.trap.lol",
     "status": "online"
   },
   {
-    "name": "Stirling PDF",
-    "icon": "fa-solid fa-file-pdf",
+    "name": "PDF Manipulation",
+    "hosting": "Stirling PDF",
+    "source": "https://github.com/Stirling-Tools/Stirling-PDF",
+    "icon": "file-text",
     "url": "https://pdf.trap.lol",
     "status": "online"
   },
   {
-    "name": "IT-Tools",
-    "icon": "fa-solid fa-toolbox",
+    "name": "Online Dev Tools",
+    "hosting": "IT-Tools",
+    "source": "https://github.com/CorentinTh/it-tools",
+    "icon": "wrench",
     "url": "https://tools.trap.lol",
+    "status": "online"
+  },
+  {
+    "name": "Cyber Multi-tool",
+    "hosting": "CyberChef",
+    "source": "https://github.com/gchq/CyberChef",
+    "icon": "zap",
+    "url": "https://chef.trap.lol",
+    "status": "online"
+  },
+  {
+    "name": "Universal Airdrop",
+    "hosting": "PairDrop",
+    "source": "https://github.com/schlagmichdoch/pairdrop",
+    "icon": "share-2",
+    "url": "https://drop.trap.lol",
     "status": "online"
   }
 ]

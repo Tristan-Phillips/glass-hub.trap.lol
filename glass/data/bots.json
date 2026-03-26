@@ -1,18 +1,42 @@
 [
   {
     "name": "Zenith",
-    "icon": "fa-solid fa-robot",
-    "chat_url": "https://t.me/zenith_art_bot",
-    "repo_url": "https://git.trap.lol/trap/zenith",
-    "status": "online",
-    "description": "Automated watermark & archive engine."
+    "icon": "bot",
+    "chat_url": "https://t.me/your_zenith_bot",
+    "repo_url": "https://git.trap.lol/trap/bot-zenith",
+    "status": "offline",
+    "description": "TSH interface to bridge cli and frontend"
   },
   {
-    "name": "Jarvis",
-    "icon": "fa-solid fa-microchip",
-    "chat_url": "https://t.me/your_jarvis_bot",
-    "repo_url": "https://git.trap.lol/trap/jarvis",
-    "status": "dev",
-    "description": "VPS master control interface."
+    "name": "Carbon",
+    "icon": "cpu",
+    "chat_url": "https://t.me/your_carbon_bot",
+    "repo_url": "https://git.trap.lol/trap/bot-carbon",
+    "status": "offline",
+    "description": "VPS Management through Telegram :/"
+  },
+  {
+    "name": "Backup SIMP",
+    "icon": "archive",
+    "chat_url": "https://t.me/your_backup-simp_bot",
+    "repo_url": "https://git.trap.lol/trap/bot-backup-simp",
+    "status": "offline",
+    "description": "Place your trust in the CCP that your backups are secure"
+  },
+  {
+    "name": "xPay",
+    "icon": "coins",
+    "chat_url": "https://t.me/your_xpay_bot",
+    "repo_url": "https://git.trap.lol/trap/bot-xpay-simp",
+    "status": "conceptual",
+    "description": "Telegram XNO nano crypto currency facilitator"
+  },
+  {
+    "name": "Paintedd Art",
+    "icon": "palette",
+    "chat_url": "https://t.me/your_paintedd_bot",
+    "repo_url": "https://git.trap.lol/trap/bot-paintedd-art",
+    "status": "conceptual",
+    "description": "Paintedd bot ... for something still unsure"
   }
 ]

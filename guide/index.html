@@ -5,61 +5,135 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>trap.lol // docs</title>
     <link rel="stylesheet" href="../glass/style/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
-        /* Specific overrides for reading documents */
         body { max-width: 800px; padding-top: 4rem; }
-        .back-btn { 
-            display: inline-flex; align-items: center; gap: 0.5rem; 
-            color: var(--accent); text-decoration: none; font-family: var(--font-mono); 
-            margin-bottom: 2rem; transition: var(--transition);
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            margin-bottom: 2rem;
+            transition: var(--transition);
         }
+        .back-btn svg { width: 1rem; height: 1rem; }
         .back-btn:hover { color: #fff; transform: translateX(-5px); }
-        
-        /* Markdown Styling */
-        #md-content { background: var(--glass-bg); padding: 2.5rem; border-radius: 8px; border: 1px solid var(--glass-border); }
-        #md-content h1, #md-content h2, #md-content h3 { font-family: var(--font-mono); margin-top: 2rem; margin-bottom: 1rem; color: #fff; }
-        #md-content p { margin-bottom: 1.2rem; color: #ccc; }
-        #md-content code { background: rgba(0,0,0,0.5); padding: 0.2rem 0.4rem; border-radius: 4px; font-family: var(--font-mono); color: var(--accent); }
-        #md-content pre { background: rgba(0,0,0,0.5); padding: 1rem; border-radius: 6px; overflow-x: auto; margin-bottom: 1.5rem; border: 1px solid var(--glass-border); }
+
+        #md-content {
+            background: var(--glass-bg);
+            padding: 2.5rem;
+            border-radius: 6px;
+            border: 1px solid var(--glass-border-mute);
+        }
+        #md-content h1, #md-content h2, #md-content h3 {
+            font-family: var(--font-mono);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+        #md-content p    { margin-bottom: 1.2rem; color: #ccc; }
+        #md-content code {
+            background: rgba(0,0,0,0.5);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: var(--font-mono);
+            color: var(--accent);
+        }
+        #md-content pre {
+            background: rgba(0,0,0,0.5);
+            padding: 1rem;
+            border-radius: 6px;
+            overflow-x: auto;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--glass-border-mute);
+        }
         #md-content pre code { background: transparent; padding: 0; color: #e2e2e2; }
         #md-content ul, #md-content ol { margin-bottom: 1.5rem; padding-left: 2rem; color: #ccc; }
         #md-content a { color: var(--accent); text-decoration: none; }
         #md-content a:hover { text-decoration: underline; }
+
+        .loader-wrap {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--text-muted);
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+        }
+        .loader-wrap svg {
+            width: 1.1rem;
+            height: 1.1rem;
+            color: var(--accent);
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
     </style>
 </head>
 <body>
+    <a href="/" class="back-btn"><i data-lucide="arrow-left"></i> Return to Hub</a>
 
-    <a href="/" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Return to Hub</a>
-    
     <div id="md-content">
-        <i class="fa-solid fa-circle-notch fa-spin"></i> Parsing uplink data...
+        <div class="loader-wrap">
+            <i data-lucide="loader-circle"></i> Parsing uplink data...
+        </div>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', async () => {
-            const urlParams = new URLSearchParams(window.location.search);
-            const mdFile = urlParams.get('md');
+        (async () => {
             const contentDiv = document.getElementById('md-content');
 
-            if (!mdFile) {
-                contentDiv.innerHTML = '<span style="color: #f87171;">ERR: No document specified.</span>';
+            function loadScript(src) {
+                return new Promise((resolve, reject) => {
+                    const s = document.createElement('script');
+                    s.src = src;
+                    s.onload = resolve;
+                    s.onerror = () => reject(new Error('Failed to load shard: ' + src));
+                    document.head.appendChild(s);
+                });
+            }
+
+            let config;
+            try {
+                const res = await fetch('/glass/data/config.json');
+                if (!res.ok) throw new Error(res.status + ' ' + res.statusText);
+                config = await res.json();
+            } catch (e) {
+                contentDiv.innerHTML = '<span style="color:#f87171;">ERR: Could not load config.</span>';
+                console.error('[boot] config.json failed:', e);
                 return;
             }
 
             try {
-                // Fetch the markdown file from the glass directory
-                const response = await fetch(`/glass/markdown/${mdFile}`);
-                if (!response.ok) throw new Error('File not found');
-                
-                const markdownText = await response.text();
-                // Parse and inject
-                contentDiv.innerHTML = marked.parse(markdownText);
-            } catch (error) {
-                contentDiv.innerHTML = `<span style="color: #f87171;">ERR: Could not retrieve ${mdFile}.</span>`;
+                await Promise.all([
+                    loadScript(config.shards.lucide),
+                    loadScript(config.shards.marked),
+                ]);
+            } catch (e) {
+                contentDiv.innerHTML = '<span style="color:#f87171;">ERR: Could not load required shards.</span>';
+                console.error('[boot] shard load failed:', e);
+                return;
             }
-        });
+
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+
+            const mdFile = new URLSearchParams(window.location.search).get('md');
+            if (!mdFile) {
+                contentDiv.innerHTML = '<span style="color:#f87171;">ERR: No document specified.</span>';
+                return;
+            }
+
+            try {
+                const res = await fetch('/glass/markdown/' + mdFile);
+                if (!res.ok) throw new Error('File not found');
+                contentDiv.innerHTML = marked.parse(await res.text());
+            } catch (e) {
+                contentDiv.innerHTML = '<span style="color:#f87171;">ERR: Could not retrieve ' + mdFile + '.</span>';
+                console.error('[guide] markdown fetch failed:', e);
+            }
+        })();
     </script>
 </body>
 </html>

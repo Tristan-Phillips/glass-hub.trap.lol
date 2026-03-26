@@ -1,0 +1,5 @@
+# Local shard testing copies (use cdn.trap.lol in production)
+/shards/
+
+# Orphaned / WIP markdown backups
+glass/markdown/*.bk
