@@ -3,23 +3,347 @@
     "category": "A - Media & Streaming",
     "links": [
       {
-        "name": "Spotify Web",
+        "name": "Stremio",
         "shortcut": "A1",
-        "url": "https://open.spotify.com",
+        "url": "https://www.stremio.com",
         "trust_level": "High",
-        "info": "Official web player. Requires premium for no ads."
+        "info": "Unified streaming hub. Add Torrentio addon for real content. Legally grey but technically clean."
+      },
+      {
+        "name": "Jellyfin",
+        "shortcut": "A3",
+        "url": "https://jellyfin.org",
+        "trust_level": "High",
+        "info": "Self-hosted media server. Free, open-source, no Plex telemetry or paywalls."
+      },
+      {
+        "name": "MyNoise",
+        "shortcut": "A5",
+        "url": "https://mynoise.net",
+        "trust_level": "High",
+        "info": "Scientifically calibrated ambient noise. Focus, sleep, masking. One-time donation unlocks all."
       }
     ]
   },
   {
-    "category": "B - Utility & Tools",
+    "category": "B - Utility & Productivity",
     "links": [
       {
-        "name": "Photopea",
+        "name": "Kagi Search",
         "shortcut": "B1",
-        "url": "https://www.photopea.com/",
+        "url": "https://kagi.com",
         "trust_level": "High",
-        "info": "Free, browser-based Photoshop alternative."
+        "info": "Paid search engine. No ads, no tracking, no SEO slop. Earns every cent."
+      },
+      {
+        "name": "Migadu",
+        "shortcut": "B2",
+        "url": "https://www.migadu.com",
+        "trust_level": "High",
+        "info": "Honest email hosting. Transparent pricing, no per-address fees, no privacy theatre."
+      },
+      {
+        "name": "Photopea",
+        "shortcut": "B3",
+        "url": "https://www.photopea.com",
+        "trust_level": "High",
+        "info": "Browser-based Photoshop alternative. PSD, AI, XD support. No install, free."
+      },
+      {
+        "name": "Excalidraw",
+        "shortcut": "B4",
+        "url": "https://excalidraw.com",
+        "trust_level": "High",
+        "info": "Minimal whiteboard / diagram tool. E2E encrypted sharing, no account needed."
+      },
+      {
+        "name": "Bitwarden Web",
+        "shortcut": "B5",
+        "url": "https://vault.bitwarden.com",
+        "trust_level": "High",
+        "info": "Open-source password manager. Self-hostable via Vaultwarden — full feature parity, free."
+      },
+      {
+        "name": "Tabby Terminal",
+        "shortcut": "B7",
+        "url": "https://tabby.sh",
+        "trust_level": "High",
+        "info": "Modern cross-platform terminal. SSH manager, split panes, theme support. Electron but earns it."
+      },
+      {
+        "name": "Syncthing",
+        "shortcut": "B8",
+        "url": "https://syncthing.net",
+        "trust_level": "High",
+        "info": "Decentralised file sync. No server, no account, no cloud middleman. Pure P2P."
+      }
+    ]
+  },
+  {
+    "category": "C - Privacy & Security",
+    "links": [
+      {
+        "name": "Mullvad VPN",
+        "shortcut": "C1",
+        "url": "https://mullvad.net",
+        "trust_level": "High",
+        "info": "No-account VPN. Pay with cash or crypto. Audited, warrant canary maintained."
+      },
+      {
+        "name": "BrowserLeaks",
+        "shortcut": "C2",
+        "url": "https://browserleaks.com",
+        "trust_level": "High",
+        "info": "Full browser fingerprint and leak audit. JS, WebRTC, fonts, canvas — all exposed."
+      },
+      {
+        "name": "Have I Been Pwned",
+        "shortcut": "C3",
+        "url": "https://haveibeenpwned.com",
+        "trust_level": "High",
+        "info": "Check email against known breach databases. Troy Hunt runs it personally."
+      },
+      {
+        "name": "DNS Leak Test",
+        "shortcut": "C4",
+        "url": "https://dnsleaktest.com",
+        "trust_level": "High",
+        "info": "Verify your DNS resolver isn't leaking past your VPN or custom config."
+      },
+      {
+        "name": "Privacy Guides",
+        "shortcut": "C5",
+        "url": "https://www.privacyguides.org",
+        "trust_level": "High",
+        "info": "Community-maintained, no-affiliate tool recommendations. Saner than most."
+      },
+      {
+        "name": "2FA Directory",
+        "shortcut": "C6",
+        "url": "https://2fa.directory",
+        "trust_level": "High",
+        "info": "Check which services support 2FA and what type before committing."
+      },
+      {
+        "name": "Shodan",
+        "shortcut": "C8",
+        "url": "https://www.shodan.io",
+        "trust_level": "High",
+        "info": "Search engine for exposed devices and services. Check your own exposure."
+      }
+    ]
+  },
+  {
+    "category": "D - Linux & Self-Hosting",
+    "links": [
+      {
+        "name": "Arch Wiki",
+        "shortcut": "D1",
+        "url": "https://wiki.archlinux.org",
+        "trust_level": "High",
+        "info": "The definitive Linux reference. Distro-agnostic in practice."
+      },
+      {
+        "name": "Awesome Self-Hosted",
+        "shortcut": "D2",
+        "url": "https://awesome-selfhosted.net",
+        "trust_level": "High",
+        "info": "Curated index of self-hostable software. First stop for any new service search."
+      },
+      {
+        "name": "Dockge",
+        "shortcut": "D4",
+        "url": "https://dockge.kuma.pet",
+        "trust_level": "High",
+        "info": "Compose-native Docker stack manager. Reactive UI, no agent bloat. Portainer done right."
+      },
+      {
+        "name": "DistroWatch",
+        "shortcut": "D6",
+        "url": "https://distrowatch.com",
+        "trust_level": "High",
+        "info": "Linux distro news, release tracking, comparison. Useful when recommending an OS."
+      }
+    ]
+  },
+  {
+    "category": "E - Development & Code",
+    "links": [
+      {
+        "name": "MDN Web Docs",
+        "shortcut": "E1",
+        "url": "https://developer.mozilla.org",
+        "trust_level": "High",
+        "info": "The web platform reference. HTML, CSS, JS — source of truth."
+      },
+      {
+        "name": "GitHub",
+        "shortcut": "E2",
+        "url": "https://github.com",
+        "trust_level": "High",
+        "info": "Largest code host. Mirror here for visibility and discoverability."
+      },
+      {
+        "name": "Lucide Icons",
+        "shortcut": "E3",
+        "url": "https://lucide.dev/icons",
+        "trust_level": "High",
+        "info": "Searchable icon library. Source for all data-lucide attribute values."
+      },
+      {
+        "name": "Regex101",
+        "shortcut": "E4",
+        "url": "https://regex101.com",
+        "trust_level": "High",
+        "info": "Interactive regex builder with full match explanation and token breakdown."
+      },
+      {
+        "name": "Cron Guru",
+        "shortcut": "E5",
+        "url": "https://crontab.guru",
+        "trust_level": "High",
+        "info": "Cron expression editor and human-readable explainer."
+      },
+      {
+        "name": "Go Playground",
+        "shortcut": "E6",
+        "url": "https://go.dev/play",
+        "trust_level": "High",
+        "info": "Run Go snippets in the browser. No toolchain install needed."
+      },
+      {
+        "name": "Rust Playground",
+        "shortcut": "E7",
+        "url": "https://play.rust-lang.org",
+        "trust_level": "High",
+        "info": "Browser-based Rust compiler. Test, share, iterate without local setup."
+      },
+      {
+        "name": "Godbolt",
+        "shortcut": "E8",
+        "url": "https://godbolt.org",
+        "trust_level": "High",
+        "info": "Compiler Explorer. See generated assembly for any language, any compiler, any flags."
+      },
+      {
+        "name": "tldr.sh",
+        "shortcut": "E9",
+        "url": "https://tldr.sh",
+        "trust_level": "High",
+        "info": "Simplified man pages. Practical examples only. Community-maintained."
+      }
+    ]
+  },
+  {
+    "category": "F - AI & LLM",
+    "links": [
+      {
+        "name": "Claude",
+        "shortcut": "F1",
+        "url": "https://claude.ai",
+        "trust_level": "High",
+        "info": "Best-in-class for code, reasoning, and long-context. The actual tool."
+      },
+      {
+        "name": "Chub.ai",
+        "shortcut": "F2",
+        "url": "https://chub.ai",
+        "trust_level": "High",
+        "info": "Character and roleplay AI hub. Massive catalogue, mostly free, actually works."
+      },
+      {
+        "name": "Venice.ai",
+        "shortcut": "F3",
+        "url": "https://venice.ai",
+        "trust_level": "High",
+        "info": "Private, uncensored AI inference. Runs on user's behalf — no conversation logging."
+      },
+      {
+        "name": "Ollama",
+        "shortcut": "F4",
+        "url": "https://ollama.com",
+        "trust_level": "High",
+        "info": "Local LLM runner. Pull any model, run fully offline. Zero telemetry."
+      },
+      {
+        "name": "Hugging Face",
+        "shortcut": "F5",
+        "url": "https://huggingface.co",
+        "trust_level": "High",
+        "info": "Model hub for local inference. Source for Ollama, llama.cpp, and Automatic1111 weights."
+      },
+      {
+        "name": "Arxiv CS",
+        "shortcut": "F6",
+        "url": "https://arxiv.org/list/cs/recent",
+        "trust_level": "High",
+        "info": "CS preprints. ML, systems, security, crypto. No paywall, ever."
+      }
+    ]
+  },
+  {
+    "category": "G - Finance & Crypto",
+    "links": [
+      {
+        "name": "Monero Observer",
+        "shortcut": "G4",
+        "url": "https://monero.observer",
+        "trust_level": "High",
+        "info": "Independent XMR news aggregator. No ads, no coin shill, just signal."
+      }
+    ]
+  },
+  {
+    "category": "H - General Recommendations",
+    "links": [
+      {
+        "name": "RTINGS",
+        "shortcut": "H1",
+        "url": "https://www.rtings.com",
+        "trust_level": "High",
+        "info": "Objective hardware reviews with real measurements. TVs, monitors, headphones, laptops."
+      },
+      {
+        "name": "DeepL Translate",
+        "shortcut": "H2",
+        "url": "https://www.deepl.com/translator",
+        "trust_level": "High",
+        "info": "Consistently better translation quality than Google. EU-based, no selling data."
+      },
+      {
+        "name": "Alternativeto",
+        "shortcut": "H3",
+        "url": "https://alternativeto.net",
+        "trust_level": "High",
+        "info": "Find alternatives to any software. Filter: open-source, self-hosted, platform."
+      },
+      {
+        "name": "Internet Archive",
+        "shortcut": "H4",
+        "url": "https://archive.org",
+        "trust_level": "High",
+        "info": "Wayback Machine, free books, software, music. The actual digital preservation org."
+      },
+      {
+        "name": "Anna's Archive",
+        "shortcut": "H5",
+        "url": "https://annas-archive.org",
+        "trust_level": "High",
+        "info": "Largest shadow library index. Books, papers, comics. Knowledge should be free."
+      },
+      {
+        "name": "Openverse",
+        "shortcut": "H7",
+        "url": "https://openverse.org",
+        "trust_level": "High",
+        "info": "Search for openly-licensed images, audio, and video. Safe for any project."
+      },
+      {
+        "name": "Worldtimebuddy",
+        "shortcut": "H8",
+        "url": "https://www.worldtimebuddy.com",
+        "trust_level": "High",
+        "info": "Visual timezone converter and meeting scheduler. The good one for coordinating across regions."
       }
     ]
   }

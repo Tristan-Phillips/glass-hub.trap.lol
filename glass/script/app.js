@@ -98,6 +98,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     try {
       let html = "";
       toolsData.forEach((tool) => {
+        const safeCmd = tool.install_cmd.replace(/&/g,"&amp;").replace(/"/g,"&quot;");
         html += `
           <div class="tool-card">
             <div class="tool-card__header">
@@ -108,7 +109,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             <p class="tool-card__desc">${tool.description}</p>
             <div class="tool-card__cmd">
               <code>${tool.install_cmd}</code>
-              <button class="tool-card__copy" aria-label="Copy install command" data-cmd="${tool.install_cmd}">
+              <button class="tool-card__copy" aria-label="Copy install command" data-cmd="${safeCmd}">
                 <i data-lucide="copy"></i>
               </button>
             </div>
@@ -166,12 +167,12 @@ document.addEventListener("DOMContentLoaded", async () => {
   if ($extContainer) {
     try {
       let html = "";
-      extData.forEach((category) => {
+      extData.forEach((category, idx) => {
         let linksHTML = "";
         category.links.forEach((link) => {
           shortcutMap.set(link.shortcut.toLowerCase(), link.url);
           linksHTML += `
-            <a href="${link.url}" target="_blank" rel="noopener" class="item-ext" aria-label="${link.name}">
+            <a href="${link.url}" target="_blank" rel="noopener" class="item-ext" aria-label="${link.shortcut}: ${link.name}">
               <span class="ext-shortcut">[${link.shortcut}]</span>
               <span class="ext-name">${link.name}</span>
               <div class="tooltip-data" role="tooltip">
@@ -181,10 +182,19 @@ document.addEventListener("DOMContentLoaded", async () => {
             </a>
           `;
         });
+        const catId = `ext-cat-${idx}`;
         html += `
-          <div class="ext-category">
-            <h3>${category.category}</h3>
-            <div class="ext-list">${linksHTML}</div>
+          <div class="ext-category" id="${catId}">
+            <button class="ext-category__toggle" aria-expanded="false" aria-controls="${catId}-body">
+              <span class="ext-category__label">${category.category}</span>
+              <span class="ext-category__count">${category.links.length}</span>
+              <i data-lucide="chevron-down" class="ext-category__chevron"></i>
+            </button>
+            <div class="ext-category__body" id="${catId}-body" role="region">
+              <div class="ext-category__body-inner">
+                <div class="ext-list">${linksHTML}</div>
+              </div>
+            </div>
           </div>
         `;
       });
@@ -193,6 +203,25 @@ document.addEventListener("DOMContentLoaded", async () => {
       renderError($extContainer, "Failed to render signal mesh.");
       console.error("[render] extlinks:", e);
     }
+  }
+
+  // ── 7b. Accordion toggle ─────────────────────────────────────────────────
+  if ($extContainer) {
+    $extContainer.addEventListener("click", (e) => {
+      const $btn = e.target.closest(".ext-category__toggle");
+      if (!$btn) return;
+      const $cat = $btn.closest(".ext-category");
+      const isOpen = $cat.classList.contains("ext-category--open");
+      $cat.classList.toggle("ext-category--open", !isOpen);
+      $btn.setAttribute("aria-expanded", String(!isOpen));
+    });
+    $extContainer.addEventListener("keydown", (e) => {
+      if (e.key !== "Enter" && e.key !== " ") return;
+      const $btn = e.target.closest(".ext-category__toggle");
+      if (!$btn) return;
+      e.preventDefault();
+      $btn.click();
+    });
   }
 
   // ── 8. Sacred Codex ──────────────────────────────────────────────────────
@@ -241,6 +270,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     console.warn("[lucide] library not available — icons will not render.");
   }
 
+  // ── 9b. Carousel arrow initial state (after layout) ──────────────────────
+  requestAnimationFrame(updateArrows);
+
   // ── 10. Copy-to-clipboard (Ordnance Depot) ───────────────────────────────
   document.addEventListener("click", (e) => {
     const $btn = e.target.closest(".tool-card__copy");
@@ -255,8 +287,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   });
 
   // ── 11. Carousel arrows (Sacred Codex) ───────────────────────────────────
-  const $carousel = document.querySelector(".carousel");
-  const $track    = document.getElementById("guides-track");
+  const $track = document.getElementById("guides-track");
   const $btnPrev  = document.querySelector(".carousel__arrow--prev");
   const $btnNext  = document.querySelector(".carousel__arrow--next");
 
@@ -278,7 +309,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
   if ($track) {
     $track.addEventListener("scroll", updateArrows, { passive: true });
-    updateArrows();
   }
 
   // ── 12. Flip cards — touch + keyboard ───────────────────────────────────
@@ -313,7 +343,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const $cmdText    = document.getElementById("cmd-text");
 
     document.addEventListener("keydown", (e) => {
-      if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") return;
+      if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA" || e.target.tagName === "BUTTON") return;
       if (!/^[a-zA-Z0-9]$/.test(e.key)) return;
 
       keyBuffer += e.key.toLowerCase();
