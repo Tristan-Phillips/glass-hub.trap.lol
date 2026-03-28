@@ -9,6 +9,6 @@
   },
   "shards": {
     "lucide": "https://cdn.trap.lol/shards/lucide.min.js",
-    "marked": "/shards/marked.min.js"
+    "marked": "https://cdn.trap.lol/shards/marked.min.js"
   }
 }

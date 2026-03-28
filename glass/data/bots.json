@@ -2,41 +2,41 @@
   {
     "name": "Zenith",
     "icon": "bot",
-    "chat_url": "https://t.me/your_zenith_bot",
+    "chat_url": "#",
     "repo_url": "https://git.trap.lol/trap/bot-zenith",
     "status": "offline",
-    "description": "TSH interface to bridge cli and frontend"
+    "description": "TSH interface to bridge CLI and frontend"
   },
   {
     "name": "Carbon",
     "icon": "cpu",
-    "chat_url": "https://t.me/your_carbon_bot",
+    "chat_url": "#",
     "repo_url": "https://git.trap.lol/trap/bot-carbon",
     "status": "offline",
-    "description": "VPS Management through Telegram :/"
+    "description": "VPS management through Telegram"
   },
   {
     "name": "Backup SIMP",
     "icon": "archive",
-    "chat_url": "https://t.me/your_backup-simp_bot",
+    "chat_url": "#",
     "repo_url": "https://git.trap.lol/trap/bot-backup-simp",
     "status": "offline",
-    "description": "Place your trust in the CCP that your backups are secure"
+    "description": "Automated backup orchestration and verification"
   },
   {
     "name": "xPay",
     "icon": "coins",
-    "chat_url": "https://t.me/your_xpay_bot",
+    "chat_url": "#",
     "repo_url": "https://git.trap.lol/trap/bot-xpay-simp",
     "status": "conceptual",
-    "description": "Telegram XNO nano crypto currency facilitator"
+    "description": "Telegram XNO Nano crypto currency facilitator"
   },
   {
     "name": "Paintedd Art",
     "icon": "palette",
-    "chat_url": "https://t.me/your_paintedd_bot",
+    "chat_url": "#",
     "repo_url": "https://git.trap.lol/trap/bot-paintedd-art",
     "status": "conceptual",
-    "description": "Paintedd bot ... for something still unsure"
+    "description": "Art generation and distribution interface"
   }
 ]
